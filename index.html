@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PageForge — AI Landing Page Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <!-- ── Gradient orbs ────────────────────────────────────── -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="app" id="app">
+
+      <!-- ── Header ──────────────────────────────────────────── -->
+      <header class="header">
+        <div class="header-inner">
+
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="logo-text">Page<span class="logo-accent">Forge</span></span>
+          </a>
+
+          <nav class="header-nav">
+            <span class="nav-badge">
+              <span class="badge-dot"></span>
+              Powered by Claude
+            </span>
+          </nav>
+
+          <div class="header-actions">
+            <a href="https://devfolio-os.vercel.app" class="header-btn" target="_blank" rel="noopener">
+              Portfolio
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- ── Main layout ──────────────────────────────────────── -->
+      <main class="main">
+
+        <!-- ── LEFT: Config panel ───────────────────────────────── -->
+        <aside class="config-panel" id="configPanel">
+
+          <div class="config-scroll">
+
+            <!-- Hero intro -->
+            <div class="config-intro">
+              <h1 class="config-title">Build your landing page</h1>
+              <p class="config-sub">Describe your product — Claude writes and designs the full page in seconds.</p>
+            </div>
+
+            <!-- Form -->
+            <form class="config-form" id="configForm" novalidate>
+
+              <!-- Product name -->
+              <div class="field-group">
+                <label class="field-label" for="productName">
+                  Product name
+                  <span class="field-required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="productName"
+                  class="field-input"
+                  placeholder="e.g. TaskFlow, NovaPay, Glide"
+                  maxlength="60"
+                  autocomplete="off"
+                />
+              </div>
+
+              <!-- Product description -->
+              <div class="field-group">
+                <label class="field-label" for="productDesc">
+                  What does it do?
+                  <span class="field-required">*</span>
+                </label>
+                <textarea
+                  id="productDesc"
+                  class="field-textarea"
+                  rows="4"
+                  placeholder="Describe your product, target audience, and key benefits. The more detail you give, the better the page."
+                ></textarea>
+                <span class="field-hint">Tip: mention who it's for and the main problem it solves.</span>
+              </div>
+
+              <!-- Style selector -->
+              <div class="field-group">
+                <label class="field-label">Page style</label>
+                <div class="style-grid" id="styleGrid">
+                  <button type="button" class="style-card active" data-style="startup">
+                    <span class="style-icon">🚀</span>
+                    <span class="style-name">Startup</span>
+                    <span class="style-desc">Bold, energetic, gradient-heavy</span>
+                  </button>
+                  <button type="button" class="style-card" data-style="minimal">
+                    <span class="style-icon">◻</span>
+                    <span class="style-name">Minimal</span>
+                    <span class="style-desc">Clean, white space, type-forward</span>
+                  </button>
+                  <button type="button" class="style-card" data-style="corporate">
+                    <span class="style-icon">🏢</span>
+                    <span class="style-name">Corporate</span>
+                    <span class="style-desc">Professional, trust-building</span>
+                  </button>
+                  <button type="button" class="style-card" data-style="dark">
+                    <span class="style-icon">🌑</span>
+                    <span class="style-name">Dark Mode</span>
+                    <span class="style-desc">Sleek, developer-focused</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Color scheme -->
+              <div class="field-group">
+                <label class="field-label">Accent colour</label>
+                <div class="color-row" id="colorRow">
+                  <button type="button" class="color-chip active" data-color="indigo" style="background:#6366f1" title="Indigo"></button>
+                  <button type="button" class="color-chip" data-color="violet" style="background:#8b5cf6" title="Violet"></button>
+                  <button type="button" class="color-chip" data-color="blue" style="background:#3b82f6" title="Blue"></button>
+                  <button type="button" class="color-chip" data-color="cyan" style="background:#06b6d4" title="Cyan"></button>
+                  <button type="button" class="color-chip" data-color="emerald" style="background:#10b981" title="Emerald"></button>
+                  <button type="button" class="color-chip" data-color="amber" style="background:#f59e0b" title="Amber"></button>
+                  <button type="button" class="color-chip" data-color="rose" style="background:#f43f5e" title="Rose"></button>
+                  <button type="button" class="color-chip" data-color="orange" style="background:#f97316" title="Orange"></button>
+                </div>
+              </div>
+
+              <!-- Sections to include -->
+              <div class="field-group">
+                <label class="field-label">Sections to include</label>
+                <div class="sections-grid" id="sectionsGrid">
+                  <label class="section-check">
+                    <input type="checkbox" value="hero" checked />
+                    <span class="check-box"></span>
+                    <span class="check-label">Hero</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="features" checked />
+                    <span class="check-box"></span>
+                    <span class="check-label">Features</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="how-it-works" checked />
+                    <span class="check-box"></span>
+                    <span class="check-label">How it works</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="pricing" />
+                    <span class="check-box"></span>
+                    <span class="check-label">Pricing</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="testimonials" />
+                    <span class="check-box"></span>
+                    <span class="check-label">Testimonials</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="faq" />
+                    <span class="check-box"></span>
+                    <span class="check-label">FAQ</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="cta" checked />
+                    <span class="check-box"></span>
+                    <span class="check-label">CTA banner</span>
+                  </label>
+                  <label class="section-check">
+                    <input type="checkbox" value="footer" checked />
+                    <span class="check-box"></span>
+                    <span class="check-label">Footer</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Generate button -->
+              <button type="submit" class="generate-btn" id="generateBtn" disabled>
+                <svg class="generate-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                <span class="generate-label">Generate Page</span>
+                <span class="generate-loading" aria-hidden="true">
+                  <span class="loading-dot"></span>
+                  <span class="loading-dot"></span>
+                  <span class="loading-dot"></span>
+                </span>
+              </button>
+
+            </form>
+
+          </div>
+        </aside>
+
+        <!-- ── RIGHT: Preview panel ──────────────────────────────── -->
+        <section class="preview-panel" id="previewPanel">
+
+          <!-- Preview toolbar -->
+          <div class="preview-toolbar">
+            <div class="toolbar-left">
+              <span class="toolbar-label" id="previewLabel">Preview</span>
+              <div class="viewport-btns">
+                <button class="viewport-btn active" data-vp="desktop" title="Desktop view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </button>
+                <button class="viewport-btn" data-vp="mobile" title="Mobile view">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="toolbar-right" id="toolbarActions" style="display:none">
+              <button class="toolbar-btn" id="copyHtmlBtn" title="Copy HTML">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                Copy HTML
+              </button>
+              <button class="toolbar-btn" id="openTabBtn" title="Open in new tab">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+                New tab
+              </button>
+              <button class="toolbar-btn primary" id="downloadBtn" title="Download HTML file">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download
+              </button>
+            </div>
+          </div>
+
+          <!-- Preview area -->
+          <div class="preview-area" id="previewArea">
+
+            <!-- Empty state -->
+            <div class="preview-empty" id="previewEmpty">
+              <div class="empty-graphic">
+                <div class="empty-window">
+                  <div class="empty-bar">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="empty-lines">
+                    <div class="empty-line w-60"></div>
+                    <div class="empty-line w-40"></div>
+                    <div class="empty-line w-80 mt"></div>
+                    <div class="empty-line w-50"></div>
+                    <div class="empty-line w-70"></div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="empty-title">Your page will appear here</h2>
+              <p class="empty-sub">Fill in the form and hit <strong>Generate Page</strong> — Claude will build a complete, ready-to-deploy landing page in seconds.</p>
+            </div>
+
+            <!-- Generating state -->
+            <div class="preview-generating" id="previewGenerating" style="display:none">
+              <div class="gen-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-core">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <p class="gen-label" id="genLabel">Generating your landing page...</p>
+              <p class="gen-sub">Claude is writing copy, designing layout, and styling your page.</p>
+              <div class="gen-steps" id="genSteps">
+                <div class="gen-step active" id="step1">✦ Crafting copy and headlines</div>
+                <div class="gen-step" id="step2">✦ Designing layout structure</div>
+                <div class="gen-step" id="step3">✦ Writing Tailwind styles</div>
+                <div class="gen-step" id="step4">✦ Finalising and cleaning up</div>
+              </div>
+            </div>
+
+            <!-- Preview iframe -->
+            <div class="preview-frame-wrap" id="previewFrameWrap" style="display:none">
+              <iframe
+                id="previewFrame"
+                class="preview-frame"
+                title="Generated landing page preview"
+                sandbox="allow-scripts allow-same-origin"
+              ></iframe>
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div><!-- /app -->
+
+    <script src="./app.js"></script>
+  </body>
+</html>
