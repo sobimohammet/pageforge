@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "outputDirectory": "public",
+  "installCommand": "npm install",
+  "functions": {
+    "api/generate.js": { "maxDuration": 60 }
+  }
+}
